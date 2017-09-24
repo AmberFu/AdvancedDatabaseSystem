@@ -1,16 +1,21 @@
 # Relational Algebra 
 * SELECT operator： ( σ conditions... Relation)
     * pick rows
+    
 * PROJECT operator： ( π attributes Relation)
     * pick columns
+    
 * COMPOSE operator：
     * pick rows then columns 
     => π attribute1, attribute2 ( σ conditions... Relation )
+    
 * CROSS-PRODUCT： (a.k.a Cartesian Product) R1 X R2
     * If R1 has n-tuple and R2 has m-tuple, then R1 X R2 will have n * m tuples.
+    
 * NATURAL JOIN：(⋈)   
     * 強制合併相同名稱的 attribute
     * 消去重複名稱的 attribute
+    
 * Theta join： (θ)
     * 一般的 join 一般指此項
 
@@ -63,4 +68,38 @@
     * CREATE TABLE :
     * ALTER TABLE :
     * DROP TABLE :
-    * CREATE INDEX :
+    * CREATE INDEX : 提昇效能最主要的方式 (https://www.youtube.com/watch?v=Y7Qlc7f_u0o)
+        * 資料庫在 search 時，通常會 scan 整張 table 找出 target values；但當建立 index 時,資料庫可值透過 index 直接找到 target values。（因此設定最常查詢的 attribute 為 index 非常重要）
+        * Underlying (基本的) data structure
+            * Balanced tree ( B tree / B+ tree ) : 有序的(?!), 0 < a <= 12 or a = 'xxx'
+            * hash tables : 一對一關係，a = 'xxx'
+        * Downside (不利) of INDEX :
+            * Extra space
+            * Index creation
+            * Index maintenance
+        * Picking which Indexes to create :
+            * 建立 index 的好處，依據以下幾點判斷：
+                * Size of table (and possibly layout)
+                * Data distribution
+                * Query or update load : 每次 update 後，都需要重建 index
+            * Physical design advisors 實體設計的建議 :
+                * Input : database (statistic) and workload
+                * Output : recommended indexes
+                * Query Optimizer - 考量 : 1) database statistic 2) query or update 3) exist indexes 後，找出一組最適的 index set ，增進資料庫效能。
+        * SQL syntax :
+        
+        > CREATE INDEX index_name ON Table(Atribute)
+        > 
+        > CREATE INDEX index_name ON Table(A1, A2, ..., An)
+        > 
+        > CREATE UNIQUE INDEX index_name ON Table(A)
+        > 
+        > DROP INDEX index_name
+        
+
+### B+ tree :
+* Rules :
+    * two keys per nodes
+    * all data is stored in the leaf nodes.
+    * every leaf is at same level.
+    * all leaf nodes have links to other leaf nodes.
