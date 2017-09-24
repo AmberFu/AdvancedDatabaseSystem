@@ -24,4 +24,5 @@
   * Isolation：每一筆 transaction 都是獨立的
   * Durability：耐久性
 
-# 資料庫的核心是解決人類需求
+
+# 資料庫的核心是解決人的需求
