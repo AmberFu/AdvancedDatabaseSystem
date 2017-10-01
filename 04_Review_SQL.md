@@ -42,61 +42,67 @@
 
     * combine / JOIN : 
         * INNER JOIN
-        * OUTER JOIN : In Oracle, place (+) on secondary table in WHERE statement.
+        * OUTER JOIN : 
+            * In Oracle, place (+) on secondary table in WHERE statement.
             * LEFT (OUTER) JOIN
             * RIGHT (OUTER) JOIN
         * UNION
         * INTERSECT
         * MINUS
     * set membership operator / IN or NOT IN : 可篩選一整組的值
-    * set comparison operators / CONTAINS, SOME, ANY, ALL : output 是 Boolean (Ture / False)
+    * set comparison operators / CONTAINS, SOME, ANY, ALL : 
+        * output 是 Boolean (Ture / False)
         * CONTAINS : A CONTAINS B == set A is a superset of set B
->           ex: Dept   DNo| dName |marName|floor
->                      Eng|English|  Lin  |  2
->           => Name of employees who manage all the department on the 2nd floor?
->           SELECT d1.mgrName
->           FROM Dept d1
->           WHERE ( SELECT d2.dName FROM Dept d2
->                   WHERE d1.mgrName = d2.mgrName )
->                 contains
->                 ( SELECT dName FROM Dept WHERE floor = 1 )
+        
+```sh
+           ex: Dept   
+           | DNo |  dName  | marName | floor |
+           | Eng | English |   Lin   |   2   |
+           => Name of employees who manage all the department on the 2nd floor?
+           SELECT d1.mgrName
+           FROM Dept d1
+           WHERE ( SELECT d2.dName FROM Dept d2
+                   WHERE d1.mgrName = d2.mgrName )
+                 contains
+                 ( SELECT dName FROM Dept WHERE floor = 1 )
+```
+* SOME :
+* ANY :
+* ALL : 如下...
+```sh
+        ex: 
+        Employee  
+        | ID | Name | Sex | Dept | Salary |
+        | 12 | Wang | F | CS | 60,000 |
+        Dept      
+        | DNo | floor |
+        | CS | 1 |
+        Q: Fine the name of Employees whose salary is higher than the salaey of everyone on the first floor
+        Ans1:
+        SELECT Name
+        FROM Employee
+        WHERE Salary > ALL ( SELECT e.Salary FROM Employee e, Dept d
+                             WHERE e.Dept = d.DNo and d.floor = 1 )
+        Ans2:
+        SELECT Name
+        FROM Employee
+        WHERE Salary > ( SELECT max(e.Salary) FROM Employee e, Dept d
+                         WHERE e.Dept = DNo and d.floor = 1 )
+```
 
-        * SOME :
-        
-        * ANY :
-        
-        * ALL :
-        
->        ex: Employee  ID|Name|Sex|Dept|Salary
->                      12|Wang| F | CS |60,000
->            Dept      DNo|floor
->                       CS|  1
->        => Fine the name of Employees whose salary is higher than the salaey of everyone on the first floor
->        Ans1:
->        SELECT Name
->        FROM Employee
->        WHERE Salary > ALL ( SELECT e.Salary FROM Employee e, Dept d
->                             WHERE e.Dept = d.DNo and d.floor = 1 )
->        Ans2:
->        SELECT Name
->        FROM Employee
->        WHERE Salary > ( SELECT max(e.Salary) FROM Employee e, Dept d
->                         WHERE e.Dept = DNo and d.floor = 1 )
->        
-
-    * Aggregation Functions : result will be single value
-        * COUNT([DISTINCT] x)
-        * SUM([DISTINCT] x)
-        * AVG([DISTINCT] x)
-        * MAX(x)
-        * MIN(x)
-    * GROUP BY : group attributes MUST in SELECT place
-    * HAVING : can use Aggregation Functions!
-    * ISERT : INSERT INTO table VALUES value_list(a,b,c,d); <-- insert by order!
-    * DELETE : DELETE table WHERE (...);
-    * UPDATE : UPDATE table SET attribute WHERE (...);
-    * VIEW : create a pseudo table for other people to query. 並不實際存在(physical exist)資料庫中。
-         * Syntax: CREATE VIEW <view_name> AS <query-expression>
+* Aggregation Functions : result will be single value
+    * COUNT([DISTINCT] x)
+    * SUM([DISTINCT] x)
+    * AVG([DISTINCT] x)
+    * MAX(x)
+    * MIN(x)
+* GROUP BY : group attributes MUST in SELECT place
+* HAVING : can use Aggregation Functions!
+* ISERT : INSERT INTO table VALUES value_list(a,b,c,d); <-- insert by order!
+* DELETE : DELETE table WHERE (...);
+* UPDATE : UPDATE table SET attribute WHERE (...);
+* VIEW : create a pseudo table for other people to query. 並不實際存在(physical exist)資料庫中。
+    * Syntax: CREATE VIEW <view_name> AS <query-expression>
          
 * DDL : 依 DBMS 差異而不同，check your DBMS first!
     * CREATE TABLE :
