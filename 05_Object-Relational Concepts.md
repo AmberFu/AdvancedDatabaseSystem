@@ -1,14 +1,20 @@
 # Object-Relational Concepts
 
-Quize: What is the importance of ORDB?
+> Quize: What is the importance of ORDB?
+> 
+
+**********
 
 * Database research motivation:
+
 ```sh
                  New Tech
                     ^
                     |
      The Database Community
 ```
+
+
 * Turning Point in database research
   * 1993 [World Wide Web](https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web) (aka. www or web) free to public: a lot of message release.
   * changing factor:
@@ -26,5 +32,19 @@ Quize: What is the importance of ORDB?
     * [Database Research Self-Assessment Meeting](https://beckman.cs.wisc.edu/):
         * 2008
         * 2013
+        
+
+**********
+
+  * Relational Databases
   
   
+  * Classification of DBMS Application:
+  
+ | _Simple Data_   | _Complex Data_         |
+ | :-------------: | ---------------------: |
+ | Relational DBMS | Object-Relational DBMS | 
+ | File System     | Object-Oriented DBMS   | 
+
+
+
