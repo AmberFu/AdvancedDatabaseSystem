@@ -35,15 +35,17 @@
             
             ex:
             
-               | Class ID | Class Name | Teacher ID | Teacher Name |
-               | -------- | ---------- | ---------- | ------------ |
-               | 001 | ADB | T01 | AAA |
-               | 002 | DataMining | T01 | AAA |
-               | 003 | Python | T02 | BBB |
+ Class ID | Class Name | Teacher ID | Teacher Name 
+ -------- | ---------- | ---------- | ------------ 
+ 001 | ADB | T01 | AAA 
+ 002 | DataMining | T01 | AAA 
+ 003 | Python | T02 | BBB 
                
-               當 Primary Key 為 Class ID，
-                  Class ID --> Class Name / Teacher ID / Teacher Name
-                  Teacher ID --> Teacher Name (為遞移相依性，Non-key 與 Non-key 之間）
+當 Primary Key 為 Class ID，
+
+   Class ID --> Class Name / Teacher ID / Teacher Name
+   
+   Teacher ID --> Teacher Name (為遞移相依性，Non-key 與 Non-key 之間）
               
     4. 第四正規化 ( 4 NF )：
         - A record type should not contain two or more independent multi-values facts about an entity.
