@@ -32,9 +32,7 @@
         - It must independent between non-key field ( just dependent on primary key or candidate key )
         - 消除資料表中的遞移相依（Transitive Functional Dependency，Non-key 與 Non-key 之間）
             - 遞移相依是指有些欄位資料，在 Table 中，可以由某個 non-primary key 的欄位決定
-            
-            ex:
-            
+           
                Class ID | Class Name | Teacher ID | Teacher Name 
                -------- | ---------- | ---------- | ------------ 
                001 | ADB | T01 | AAA 
@@ -47,6 +45,7 @@
         - 解決多值相依問題
     5. 第五正規化 ( 5 NF )： *不太懂...
         - 解決合併相依問題 (Join Dependency) - 合併相依是指當關聯表分割成3個或更多關聯表後, 一定能夠透過多次合併運算恢復成原來的關聯表。
+
 
 * FUNCTIONAL DEPEDENCIES 功能相依：
 
