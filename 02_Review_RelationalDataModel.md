@@ -30,23 +30,18 @@
         - 消除部分功能相依（Partial Functional Dependency）：Non-key 與 Primary-key 
     3. 第三正規化 ( 3 NF )：
         - It must independent between non-key field ( just dependent on primary key or candidate key )
-        - 消除資料表中的遞移相依（Transitive Functional Dependency）
+        - 消除資料表中的遞移相依（Transitive Functional Dependency，Non-key 與 Non-key 之間）
             - 遞移相依是指有些欄位資料，在 Table 中，可以由某個 non-primary key 的欄位決定
             
             ex:
             
- Class ID | Class Name | Teacher ID | Teacher Name 
- -------- | ---------- | ---------- | ------------ 
- 001 | ADB | T01 | AAA 
- 002 | DataMining | T01 | AAA 
- 003 | Python | T02 | BBB 
+               Class ID | Class Name | Teacher ID | Teacher Name 
+               -------- | ---------- | ---------- | ------------ 
+               001 | ADB | T01 | AAA 
+               002 | DataMining | T01 | AAA 
+               003 | Python | T02 | BBB 
                
-當 Primary Key 為 Class ID，
 
-   Class ID --> Class Name / Teacher ID / Teacher Name
-   
-   Teacher ID --> Teacher Name (為遞移相依性，Non-key 與 Non-key 之間）
-              
     4. 第四正規化 ( 4 NF )：
         - A record type should not contain two or more independent multi-values facts about an entity.
         - 解決多值相依問題
