@@ -34,6 +34,7 @@
             - 遞移相依是指有些欄位資料，在 Table 中，可以由某個 non-primary key 的欄位決定
             
             ex:
+            
                | Class ID | Class Name | Teacher ID | Teacher Name |
                | -------- | ---------- | ---------- | ------------ |
                | 001 | ADB | T01 | AAA |
