@@ -90,13 +90,14 @@
 
 # Extended ER（ EER，擴充實體關聯模型）：
 當某些 Relationship 只關聯到一個 Entity Set（ex: 員工） 中的某些 Entity（ex: IT, sales, marketing...）。
-    * 一個 Super type 可以有多個 Sub type 繼承其屬性：（類似多載觀念）
-        * Super type：共通的超類型屬性
-        * Sub type：共通的超類型屬性 + 特殊屬性
-        * 以 ISA ( is a ) 倒三角形表示特殊化關係
-        * 轉化方式：
-            * Specialization： Super Type --> 依特殊性區分出 Sub Type
-            * Generalization：Sub Type --> 歸納出 Super Type
-        * 依照實體在子類型中的隸屬關係，可區分為：
-            * disjoint 不相交 （d)  ex: 學生--(d)-- 大學生 / 國中生 ...
-            * overlap 重疊 （o）ex: 客戶--(o)-- 租屋者 / 買屋者 ...
+    
+* 一個 Super type 可以有多個 Sub type 繼承其屬性：（類似多載觀念）
+   * Super type：共通的超類型屬性
+   * Sub type：共通的超類型屬性 + 特殊屬性
+   * 以 ISA ( is a ) 倒三角形表示特殊化關係
+   * 轉化方式：
+      * Specialization： Super Type --> 依特殊性區分出 Sub Type
+      * Generalization：Sub Type --> 歸納出 Super Type
+   * 依照實體在子類型中的隸屬關係，可區分為：
+      * disjoint 不相交 （d)  ex: 學生--(d)-- 大學生 / 國中生 ...
+      * overlap 重疊 （o）ex: 客戶--(o)-- 租屋者 / 買屋者 ...
